@@ -1,4 +1,5 @@
 import { TextField, Button, Box } from '@mui/material';
+import PropTypes from 'prop-types';
 
 import { useForm } from 'shared/hooks/useForm';
 import fields from './fields';
@@ -42,6 +43,10 @@ const LoginForm = ({ onSubmit }) => {
       </Button>
     </Box>
   );
+};
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
