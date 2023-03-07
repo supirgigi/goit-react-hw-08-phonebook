@@ -1,7 +1,7 @@
 import { TextField, Button, Box } from '@mui/material';
 import PropTypes from 'prop-types';
 
-import { useForm } from 'shared/hooks/useForm';
+import { useForm } from 'shared/hooks';
 import fields from './fields';
 import initialState from './initialState';
 
