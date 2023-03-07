@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Typography, Grid } from '@mui/material';
 
+import ErrorMsg from 'shared/components/ErrorMsg';
+import Loader from 'shared/components/Loader';
 import ContactForm from 'modules/ContactForm';
 import ContactList from 'modules/ContactList';
 import Filter from 'modules/Filter';
-
 import {
   addContact,
   deleteContact,
@@ -19,12 +21,7 @@ import {
 import { setFilter } from 'redux/filter/filter-slice';
 import { selectFilter } from 'redux/filter/filter-selectors';
 
-import ErrorMsg from 'shared/components/ErrorMsg';
-import Loader from 'shared/components/Loader';
-
-import { Container, MainTitle, ContactsTitle } from './App.styled';
-
-const App = () => {
+const Phonebook = () => {
   const contacts = useSelector(selectContacts);
   const filteredContacts = useSelector(selectFilteredContacts);
   const filter = useSelector(selectFilter);
@@ -53,18 +50,51 @@ const App = () => {
   const handleFilter = e => dispatch(setFilter(e.target.value));
 
   return (
-    <Container>
-      <MainTitle>Phonebook</MainTitle>
-      <ContactForm onSubmit={handleSubmit} />
-      <ContactsTitle>Contacts</ContactsTitle>
-      <Filter value={filter} onChange={handleFilter} />
-      {contacts.length > 0 && (
-        <ContactList contacts={filteredContacts} onDelete={handleDelete} />
-      )}
+    <>
+      <Typography
+        variant="h1"
+        sx={{ textAlign: 'center', fontSize: '3rem', mb: 4 }}
+      >
+        Phonebook
+      </Typography>
+      <Grid
+        container
+        sx={{
+          flexDirection: { xs: 'column', sm: 'row' },
+          gap: { xs: 6, md: 12 },
+        }}
+      >
+        <Grid item xs>
+          <Typography
+            sx={{ textAlign: 'center', fontSize: '2rem' }}
+            variant="h2"
+          >
+            Add Contacts
+          </Typography>
+          <ContactForm onSubmit={handleSubmit} />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          sx={{ alignSelf: { xs: 'center', sm: 'auto' } }}
+        >
+          <Typography
+            sx={{ textAlign: 'center', fontSize: '2rem', mb: 2 }}
+            variant="h2"
+          >
+            Contacts
+          </Typography>
+          <Filter value={filter} onChange={handleFilter} />
+          {contacts.length > 0 && (
+            <ContactList contacts={filteredContacts} onDelete={handleDelete} />
+          )}
+        </Grid>
+      </Grid>
       {isLoading && <Loader />}
       {error && <ErrorMsg error={error} />}
-    </Container>
+    </>
   );
 };
 
-export default App;
+export default Phonebook;

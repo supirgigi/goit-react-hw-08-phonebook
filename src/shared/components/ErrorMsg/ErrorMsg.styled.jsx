@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Text = styled.p`
   margin-top: 10px;
-  color: ${props => props.theme.colors.red};
+  color: red;
   font-size: 18px;
   text-align: center;
 `;

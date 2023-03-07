@@ -7,27 +7,27 @@ import {
 
 const actions = [fetchContacts, addContact, deleteContact];
 
+const initialState = {
+  items: [],
+  isLoading: false,
+  error: null,
+};
+
 const contactsSlice = createSlice({
   name: 'contacts',
 
-  initialState: {
-    items: [],
-    isLoading: false,
-    error: null,
-  },
+  initialState,
 
   extraReducers: builder => {
     builder
-      .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.items = action.payload;
+      .addCase(fetchContacts.fulfilled, (state, { payload }) => {
+        state.items = payload;
       })
-      .addCase(addContact.fulfilled, (state, action) => {
-        state.items.push(action.payload);
+      .addCase(addContact.fulfilled, (state, { payload }) => {
+        state.items.push(payload);
       })
-      .addCase(deleteContact.fulfilled, (state, action) => {
-        const index = state.items.findIndex(
-          item => item.id === action.payload.id
-        );
+      .addCase(deleteContact.fulfilled, (state, { payload }) => {
+        const index = state.items.findIndex(item => item.id === payload.id);
         state.items.splice(index, 1);
       })
       .addMatcher(
@@ -42,9 +42,9 @@ const contactsSlice = createSlice({
       })
       .addMatcher(
         isAnyOf(...actions.map(action => action.rejected)),
-        (state, action) => {
+        (state, { payload }) => {
           state.isLoading = false;
-          state.error = action.payload;
+          state.error = payload;
         }
       );
   },

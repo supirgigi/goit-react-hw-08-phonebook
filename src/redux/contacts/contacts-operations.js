@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchAll, deleteItem, addItem } from 'shared/services/api/mockapi';
+import { fetchAll, addItem, deleteItem } from 'shared/services/api/contacts';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const res = await fetchAll();
-      return res;
+      const data = await fetchAll();
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -17,8 +17,8 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contact, thunkAPI) => {
     try {
-      const res = await addItem(contact);
-      return res;
+      const data = await addItem(contact);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -29,8 +29,8 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (id, thunkAPI) => {
     try {
-      const res = await deleteItem(id);
-      return res;
+      const data = await deleteItem(id);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

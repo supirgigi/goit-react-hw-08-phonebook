@@ -1,24 +1,28 @@
+import { Button, ListItem, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
-import { Item, Text, Button } from './ContactListItem.styled';
-
-const ContactListItem = ({ id, name, phone, onDelete }) => {
+const ContactListItem = ({ id, name, number, onDelete }) => {
   return (
-    <Item>
-      <Text>
-        {name}: {phone}
-      </Text>
-      <Button onClick={() => onDelete(id)} type="button">
+    <ListItem sx={{ display: 'flex', justifyContent: 'space-between', pt: 0 }}>
+      <Typography>
+        {name}: {number}
+      </Typography>
+      <Button
+        sx={{ ml: 2 }}
+        variant="outlined"
+        onClick={() => onDelete(id)}
+        type="button"
+      >
         Delete
       </Button>
-    </Item>
+    </ListItem>
   );
 };
 
 ContactListItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 

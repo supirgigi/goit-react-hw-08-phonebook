@@ -1,13 +1,15 @@
+import { TextField } from '@mui/material';
 import PropTypes from 'prop-types';
-
-import { Input, Label } from './Filter.styled';
 
 const Filter = ({ value, onChange }) => {
   return (
-    <Label>
-      Find contacts by name
-      <Input onChange={onChange} value={value} type="text" />
-    </Label>
+    <TextField
+      sx={{ width: '100%' }}
+      label="Find contacts by name"
+      onChange={onChange}
+      value={value}
+      type="text"
+    />
   );
 };
 
