@@ -19,7 +19,6 @@ const NotFoundPage = () => {
         component={Link}
         variant="text"
         to="/"
-        sx={{ display: 'flex', gap: 1 }}
         endIcon={<ArrowForwardIcon />}
       >
         Go Home

@@ -56,11 +56,11 @@ const authSlice = createSlice({
         isAnyOf(...actions.map(action => action.fulfilled)),
         state => {
           state.isLoading = false;
-          state.error = null;
         }
       )
       .addMatcher(isAnyOf(...actions.map(action => action.pending)), state => {
         state.isLoading = true;
+        state.error = null;
       })
       .addMatcher(
         isAnyOf(...actions.map(action => action.rejected)),

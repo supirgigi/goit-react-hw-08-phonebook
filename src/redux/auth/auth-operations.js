@@ -1,21 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
-
 import {
-  setAuthHeader,
-  clearAuthHeader,
   signUp,
   logIn,
   logOut,
   getCurrentUser,
 } from 'shared/services/api/auth';
 
+import { toast } from 'react-toastify';
+
 export const authSignUp = createAsyncThunk(
   'auth/signup',
   async (credentials, thunkAPI) => {
     try {
       const data = await signUp(credentials);
-      setAuthHeader(data.token);
       return data;
     } catch (error) {
       if (error.response.status === 400) {
@@ -35,7 +32,6 @@ export const authLogIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const data = await logIn(credentials);
-      setAuthHeader(data.token);
       return data;
     } catch (error) {
       if (error.response.status === 400) {
@@ -53,10 +49,9 @@ export const authLogOut = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       await logOut();
-      clearAuthHeader();
     } catch (error) {
       if (error.response.status === 401) {
-        toast.error('Missing header with authorization token.');
+        toast.error('User is anauthorized.');
       } else if (error.response.status === 500) {
         toast.error('Server error.');
       } else {
@@ -78,12 +73,11 @@ export const authRefreshUser = createAsyncThunk(
     }
 
     try {
-      setAuthHeader(token);
-      const data = await getCurrentUser();
+      const data = await getCurrentUser(token);
       return data;
     } catch (error) {
       if (error.response.status === 401) {
-        toast.error('Missing header with authorization token.');
+        toast.error('User is anauthorized.');
       } else {
         toast.error(error.message);
       }

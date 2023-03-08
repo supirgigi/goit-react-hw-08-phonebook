@@ -11,7 +11,7 @@ export const fetchContacts = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response.status === 401) {
-        toast.error('Missing header with authorization token.');
+        toast.error('User is anauthorized.');
       } else if (error.response.status === 404) {
         toast.error('There is no such user collection.');
       } else if (error.response.status === 500) {
@@ -34,7 +34,7 @@ export const addContact = createAsyncThunk(
       if (error.response.status === 400) {
         toast.error('Error creating contact.');
       } else if (error.response.status === 401) {
-        toast.error('Missing header with authorization token.');
+        toast.error('User is anauthorized.');
       } else {
         toast.error(error.message);
       }
@@ -51,7 +51,7 @@ export const deleteContact = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response.status === 401) {
-        toast.error('Missing header with authorization token.');
+        toast.error('User is anauthorized.');
       } else if (error.response.status === 404) {
         toast.error('There is no such user collection.');
       } else if (error.response.status === 500) {

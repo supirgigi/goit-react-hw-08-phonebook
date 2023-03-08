@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Container } from '@mui/material';
+import { Container, Box } from '@mui/material';
 import { ToastContainer } from 'react-toastify';
 
 import { authRefreshUser } from 'redux/auth/auth-operations';
@@ -20,7 +20,17 @@ const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Loader />
+    <Box
+      sx={{
+        height: '100vh',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Loader />
+    </Box>
   ) : (
     <>
       <Container component="div" sx={{ minHeight: '100vh' }}>
