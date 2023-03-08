@@ -15,6 +15,8 @@ const AuthNav = () => {
               color: 'text.main',
               '&.active': {
                 color: 'text.active',
+                cursor: 'default',
+                textDecoration: 'none',
               },
             }}
           >

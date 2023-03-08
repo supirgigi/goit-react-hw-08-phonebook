@@ -15,6 +15,8 @@ const Navigation = () => {
           color: 'text.main',
           '&.active': {
             color: 'text.active',
+            cursor: 'default',
+            textDecoration: 'none',
           },
         }}
       >
@@ -28,6 +30,8 @@ const Navigation = () => {
             color: 'text.main',
             '&.active': {
               color: 'text.active',
+              cursor: 'default',
+              textDecoration: 'none',
             },
           }}
         >

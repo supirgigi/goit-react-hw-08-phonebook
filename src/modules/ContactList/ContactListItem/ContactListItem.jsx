@@ -15,7 +15,12 @@ const ContactListItem = ({ id, name, number, onDelete }) => {
       divider
     >
       <ListItemText primary={name} secondary={number} />
-      <IconButton variant="outlined" onClick={() => onDelete(id)} type="button">
+      <IconButton
+        variant="outlined"
+        onClick={() => onDelete(id)}
+        type="button"
+        aria-label="delete"
+      >
         <DeleteIcon color="primary" />
       </IconButton>
     </ListItem>
