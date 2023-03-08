@@ -13,7 +13,7 @@ const ContactList = ({ contacts, onDelete }) => {
           name={name}
           number={number}
           onDelete={onDelete}
-        ></ContactListItem>
+        />
       ))}
     </List>
   );

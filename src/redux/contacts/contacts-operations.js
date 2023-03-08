@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchAll, addItem, deleteItem } from 'shared/services/api/contacts';
 import { toast } from 'react-toastify';
+
+import { fetchAll, addItem, deleteItem } from 'shared/services/api/contacts';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',

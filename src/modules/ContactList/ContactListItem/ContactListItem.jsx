@@ -8,7 +8,6 @@ const ContactListItem = ({ id, name, number, onDelete }) => {
     <ListItem
       sx={{
         display: 'flex',
-        justifyContent: 'space-between',
         pt: 0,
         pb: 0,
         gap: 4,
