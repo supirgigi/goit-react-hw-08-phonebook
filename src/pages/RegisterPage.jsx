@@ -21,14 +21,14 @@ const LoginPage = () => {
   return (
     <Box
       sx={{
-        height: '100%',
-        display: 'flex',
+        height: 'calc(100vh - 144px)',
         justifyContent: 'center',
         alignItems: 'center',
+        display: 'flex',
       }}
     >
-      <Box sx={{ flex: 1, pb: 10 }}>
-        <Typography variant="h4" sx={{ textAlign: 'center' }}>
+      <Box sx={{ flex: 1 }}>
+        <Typography variant="h3" sx={{ textAlign: 'center', fontSize: '2rem' }}>
           Register
         </Typography>
         <RegisterForm onSubmit={handleSignUp} />

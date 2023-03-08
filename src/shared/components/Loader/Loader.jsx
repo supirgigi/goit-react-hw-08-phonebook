@@ -1,7 +1,11 @@
-import { Text } from './Loader.styled';
+import { CircularProgress, Box } from '@mui/material';
 
 const Loader = () => {
-  return <Text>Loading...</Text>;
+  return (
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      <CircularProgress />
+    </Box>
+  );
 };
 
 export default Loader;

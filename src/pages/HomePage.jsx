@@ -4,7 +4,7 @@ const HomePage = () => {
   return (
     <Box
       sx={{
-        height: '100%',
+        height: 'calc(100vh - 144px)',
         justifyContent: 'center',
         alignItems: 'center',
         display: 'flex',

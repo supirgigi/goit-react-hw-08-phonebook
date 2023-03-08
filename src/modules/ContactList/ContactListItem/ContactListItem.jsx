@@ -1,20 +1,24 @@
-import { Button, ListItem, Typography } from '@mui/material';
+import { ListItem, IconButton, ListItemText } from '@mui/material';
 import PropTypes from 'prop-types';
+
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const ContactListItem = ({ id, name, number, onDelete }) => {
   return (
-    <ListItem sx={{ display: 'flex', justifyContent: 'space-between', pt: 0 }}>
-      <Typography>
-        {name}: {number}
-      </Typography>
-      <Button
-        sx={{ ml: 2 }}
-        variant="outlined"
-        onClick={() => onDelete(id)}
-        type="button"
-      >
-        Delete
-      </Button>
+    <ListItem
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        pt: 0,
+        pb: 0,
+        gap: 4,
+      }}
+      divider
+    >
+      <ListItemText primary={name} secondary={number} />
+      <IconButton variant="outlined" onClick={() => onDelete(id)} type="button">
+        <DeleteIcon color="primary" />
+      </IconButton>
     </ListItem>
   );
 };

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Typography, Grid } from '@mui/material';
+import { toast } from 'react-toastify';
 
-import ErrorMsg from 'shared/components/ErrorMsg';
 import Loader from 'shared/components/Loader';
 import ContactForm from 'modules/ContactForm';
 import ContactList from 'modules/ContactList';
@@ -15,8 +15,7 @@ import {
 import {
   selectContacts,
   selectFilteredContacts,
-  selectError,
-  selectIsLoading,
+  selectContactsIsLoading,
 } from 'redux/contacts/contacts-selectors';
 import { setFilter } from 'redux/filter/filter-slice';
 import { selectFilter } from 'redux/filter/filter-selectors';
@@ -25,8 +24,7 @@ const Phonebook = () => {
   const contacts = useSelector(selectContacts);
   const filteredContacts = useSelector(selectFilteredContacts);
   const filter = useSelector(selectFilter);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const isLoading = useSelector(selectContactsIsLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,7 +35,7 @@ const Phonebook = () => {
     const { name } = contact;
 
     if (contacts.find(contact => contact.name === name)) {
-      return alert(`${name} is already in contacts`);
+      return toast.warn(`${name} is already in contacts`);
     }
 
     dispatch(addContact(contact));
@@ -73,12 +71,7 @@ const Phonebook = () => {
           </Typography>
           <ContactForm onSubmit={handleSubmit} />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          sx={{ alignSelf: { xs: 'center', sm: 'auto' } }}
-        >
+        <Grid item xs={12} sm={6}>
           <Typography
             sx={{ textAlign: 'center', fontSize: '2rem', mb: 2 }}
             variant="h2"
@@ -89,10 +82,9 @@ const Phonebook = () => {
           {contacts.length > 0 && (
             <ContactList contacts={filteredContacts} onDelete={handleDelete} />
           )}
+          {isLoading && <Loader />}
         </Grid>
       </Grid>
-      {isLoading && <Loader />}
-      {error && <ErrorMsg error={error} />}
     </>
   );
 };

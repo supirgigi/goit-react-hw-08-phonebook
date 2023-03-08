@@ -11,7 +11,7 @@ const ContactsPage = () => {
   return shouldRedirect ? (
     <Navigate to="/login" />
   ) : (
-    <Box sx={{ height: '100%', pt: 15 }}>
+    <Box sx={{ height: '100%', pt: 5 }}>
       <Phonebook />
     </Box>
   );

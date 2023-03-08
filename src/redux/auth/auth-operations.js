@@ -8,6 +8,8 @@ import {
   getCurrentUser,
 } from 'shared/services/api/auth';
 
+import { toast } from 'react-toastify';
+
 export const authSignUp = createAsyncThunk(
   'auth/signup',
   async (credentials, thunkAPI) => {
@@ -16,7 +18,14 @@ export const authSignUp = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 400) {
+        toast.error('User creation error.');
+      } else if (error.response.status === 500) {
+        toast.error('Server error.');
+      } else {
+        toast.error(error.message);
+      }
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -29,6 +38,11 @@ export const authLogIn = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
+      if (error.response.status === 400) {
+        toast.error('Login error.');
+      } else {
+        toast.error(error.message);
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -41,6 +55,13 @@ export const authLogOut = createAsyncThunk(
       await logOut();
       clearAuthHeader();
     } catch (error) {
+      if (error.response.status === 401) {
+        toast.error('Missing header with authorization token.');
+      } else if (error.response.status === 500) {
+        toast.error('Server error.');
+      } else {
+        toast.error(error.message);
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -61,6 +82,11 @@ export const authRefreshUser = createAsyncThunk(
       const data = await getCurrentUser();
       return data;
     } catch (error) {
+      if (error.response.status === 401) {
+        toast.error('Missing header with authorization token.');
+      } else {
+        toast.error(error.message);
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }

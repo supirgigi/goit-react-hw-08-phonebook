@@ -43,7 +43,7 @@ const RegisterForm = ({ onSubmit }) => {
         onChange={handleChange}
         {...fields.password}
       />
-      <Button variant="contained" size="medium">
+      <Button variant="contained" size="medium" type="submit">
         Register
       </Button>
     </Box>
