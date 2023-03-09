@@ -32,12 +32,6 @@ const Phonebook = () => {
   }, [dispatch]);
 
   const handleSubmit = contact => {
-    const { name } = contact;
-
-    if (contacts.find(contact => contact.name === name)) {
-      return toast.warn(`${name} is already in contacts`);
-    }
-
     dispatch(addContact(contact));
   };
 

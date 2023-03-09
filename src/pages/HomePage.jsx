@@ -8,10 +8,14 @@ const HomePage = () => {
         justifyContent: 'center',
         alignItems: 'center',
         display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      <Typography variant="h4">
-        Welcome to Phonebook! Sign up or login to start using.
+      <Typography variant="h2" sx={{ fontSize: '2.5rem' }}>
+        Welcome to Phonebook!
+      </Typography>
+      <Typography sx={{ fontSize: '1.25rem' }}>
+        Sign up or log in to start using.
       </Typography>
     </Box>
   );

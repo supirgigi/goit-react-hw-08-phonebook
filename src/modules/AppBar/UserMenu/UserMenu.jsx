@@ -15,7 +15,14 @@ const UserMenu = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', gap: 4, alignItems: 'center', height: 40 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        gap: { xs: 1, md: 4 },
+        alignItems: 'center',
+        height: 40,
+      }}
+    >
       <Typography>{user.email}</Typography>
       <IconButton variant="outlined" onClick={logOut} aria-label="logout">
         <LogoutIcon color="secondary" />

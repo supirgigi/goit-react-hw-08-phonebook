@@ -40,6 +40,23 @@ export const addContact = createAsyncThunk(
       }
       return thunkAPI.rejectWithValue(error.message);
     }
+  },
+  {
+    condition: (contact, thunkApi) => {
+      const { contacts } = thunkApi.getState();
+      const normalizedName = contact.name.toLowerCase();
+      const isDublicate = contacts.items.find(({ name, number }) => {
+        return (
+          name.toLowerCase() === normalizedName || number === contact.number
+        );
+      });
+      if (isDublicate) {
+        toast.error(
+          'User or number you are trying to add is already in contacts'
+        );
+        return false;
+      }
+    },
   }
 );
 

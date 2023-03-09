@@ -22,7 +22,8 @@ const RegisterForm = ({ onSubmit }) => {
         flexDirection: 'column',
         pt: 4,
         maxWidth: 400,
-        m: 'auto',
+        ml: 'auto',
+        mr: 'auto',
       }}
     >
       <TextField

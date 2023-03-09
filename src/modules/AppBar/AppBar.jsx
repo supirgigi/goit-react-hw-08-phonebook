@@ -2,7 +2,7 @@ import { AppBar, Grid } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
-import UserMenu from 'modules/UserMenu';
+import UserMenu from './UserMenu';
 import AuthNav from './AuthNav';
 import MainNav from './MainNav';
 
@@ -16,10 +16,11 @@ export const NavBar = () => {
         container
         sx={{
           display: 'flex',
-          justifyContent: 'space-between',
+          justifyContent: { xs: 'center', sm: 'space-between' },
+          columnGap: { xs: 2 },
           alignItems: 'center',
-          pl: { xs: 4, sm: 8, md: 16 },
-          pr: { xs: 4, sm: 8, md: 16 },
+          pl: { xs: 1, sm: 8, md: 16 },
+          pr: { xs: 1, sm: 8, md: 16 },
         }}
       >
         <MainNav />

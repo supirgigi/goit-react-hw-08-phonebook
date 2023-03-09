@@ -2,8 +2,8 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Box } from '@mui/material';
 
-import PublicRoute from 'routes/PublicRoute/PublicRoute';
-import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';
+import PublicRoute from 'routes/PublicRoute';
+import PrivateRoute from 'routes/PrivateRoute';
 
 import Loader from 'shared/components/Loader';
 
@@ -19,7 +19,7 @@ const UserRoutes = () => {
       fallback={
         <Box
           sx={{
-            height: 'calc(100vh - 72px)',
+            height: 'calc(100vh - 144px)',
             width: '100%',
             display: 'flex',
             justifyContent: 'center',

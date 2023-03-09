@@ -12,7 +12,7 @@ const PublicRoute = () => {
     return (
       <Box
         sx={{
-          height: '100vh',
+          height: 'calc(100vh - 144px)',
           width: '100%',
           display: 'flex',
           justifyContent: 'center',

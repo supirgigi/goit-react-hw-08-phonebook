@@ -7,7 +7,7 @@ const MainNav = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
-    <Box sx={{ display: 'flex', gap: 4 }}>
+    <Box sx={{ display: 'flex', gap: { xs: 2, md: 4 } }}>
       <Link
         component={NavLink}
         to="/"
