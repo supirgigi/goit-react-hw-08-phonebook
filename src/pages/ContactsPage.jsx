@@ -1,16 +1,9 @@
-import { Navigate } from 'react-router-dom';
 import { Box } from '@mui/material';
 
-import { useAuth } from 'shared/hooks';
 import Phonebook from 'modules/Phonebook/Phonebook';
 
 const ContactsPage = () => {
-  const { isLoggedIn, isRefreshing } = useAuth();
-  const shouldRedirect = !isLoggedIn && !isRefreshing;
-
-  return shouldRedirect ? (
-    <Navigate to="/login" />
-  ) : (
+  return (
     <Box sx={{ height: '100%', pt: 5 }}>
       <Phonebook />
     </Box>

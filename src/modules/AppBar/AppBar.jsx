@@ -1,12 +1,13 @@
 import { AppBar, Grid } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
-import { useAuth } from 'shared/hooks';
 import UserMenu from 'modules/UserMenu';
-import AuthNav from 'modules/AuthNav';
-import Navigation from 'modules/Navigation';
+import AuthNav from './AuthNav';
+import MainNav from './MainNav';
 
 export const NavBar = () => {
-  const { isLoggedIn } = useAuth();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <AppBar sx={{ pt: 2, pb: 2 }}>
@@ -21,7 +22,7 @@ export const NavBar = () => {
           pr: { xs: 4, sm: 8, md: 16 },
         }}
       >
-        <Navigation />
+        <MainNav />
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </Grid>
     </AppBar>

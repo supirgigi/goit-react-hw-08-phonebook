@@ -1,12 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { Box, Typography, IconButton } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useSelector } from 'react-redux';
 
-import { useAuth } from 'shared/hooks';
+import { selectUser } from 'redux/auth/auth-selectors';
 import { authLogOut } from 'redux/auth/auth-operations';
 
 const UserMenu = () => {
-  const { user } = useAuth();
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const logOut = () => {

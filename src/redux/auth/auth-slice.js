@@ -21,7 +21,6 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
-  isRefreshing: false,
   isLoading: false,
   error: null,
 };
@@ -47,10 +46,6 @@ const authSlice = createSlice({
       .addCase(authRefreshUser.fulfilled, (state, { payload }) => {
         state.user = payload;
         state.isLoggedIn = true;
-        state.isRefreshing = false;
-      })
-      .addCase(authRefreshUser.rejected, state => {
-        state.isRefreshing = false;
       })
       .addMatcher(
         isAnyOf(...actions.map(action => action.fulfilled)),

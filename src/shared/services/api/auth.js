@@ -9,13 +9,13 @@ const clearAuthHeader = () => {
 };
 
 export const signUp = async credentials => {
-  const { data } = await instance.post('users/signup', credentials);
+  const { data } = await instance.post('/users/signup', credentials);
   setAuthHeader(data.token);
   return data;
 };
 
 export const logIn = async credentials => {
-  const { data } = await instance.post('users/login', credentials);
+  const { data } = await instance.post('/users/login', credentials);
   setAuthHeader(data.token);
   return data;
 };
@@ -27,6 +27,6 @@ export const logOut = async () => {
 
 export const getCurrentUser = async token => {
   setAuthHeader(token);
-  const { data } = await instance.get('users/current');
+  const { data } = await instance.get('/users/current');
   return data;
 };

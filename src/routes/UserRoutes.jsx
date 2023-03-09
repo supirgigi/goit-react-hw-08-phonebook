@@ -2,6 +2,9 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Box } from '@mui/material';
 
+import PublicRoute from 'routes/PublicRoute/PublicRoute';
+import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';
+
 import Loader from 'shared/components/Loader';
 
 const HomePage = lazy(() => import('pages/HomePage'));
@@ -29,9 +32,14 @@ const UserRoutes = () => {
     >
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
+        <Route element={<PublicRoute />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="/contacts" element={<ContactsPage />} />
+        </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>

@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { Box, Link } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
-import { useAuth } from 'shared/hooks';
-
-const Navigation = () => {
-  const { isLoggedIn } = useAuth();
+const MainNav = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <Box sx={{ display: 'flex', gap: 4 }}>
@@ -42,4 +42,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default MainNav;
