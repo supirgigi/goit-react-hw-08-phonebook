@@ -11,7 +11,7 @@ const HomePage = () => {
         flexDirection: 'column',
       }}
     >
-      <Typography variant="h2" sx={{ fontSize: '2.5rem' }}>
+      <Typography variant="h2" sx={{ fontSize: '2.5rem', textAlign: 'center' }}>
         Welcome to Phonebook!
       </Typography>
       <Typography sx={{ fontSize: '1.25rem' }}>
