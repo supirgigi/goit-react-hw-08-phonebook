@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Typography, Grid } from '@mui/material';
-import { toast } from 'react-toastify';
 
 import Loader from 'shared/components/Loader';
 import ContactForm from 'modules/ContactForm';
